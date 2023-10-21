@@ -29,12 +29,15 @@ const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/register" element={<Register setUser={setUser} />} />
-      </Routes>
+    <div>
+      <NavBar user={user} handleLogOut={handleLogOut} />
+      <main>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/register" element={<Register setUser={setUser} />} />
+        </Routes>
+      </main>
     </div>
   )
 }
