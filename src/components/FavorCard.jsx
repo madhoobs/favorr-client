@@ -1,18 +1,18 @@
-const CategoryCard = ({ categories, onClick }) => {
+const FavorCard = ({ favors, onClick }) => {
   return (
     <div>
-      {categories.map((category) => (
+      {favors.map((favor) => (
         <div
           className="card game-card"
-          key={category._id}
-          id={category.name}
+          key={favor._id}
+          id={favor._id}
           onClick={onClick}
         >
           <div className="img-wrapper">
-            <img src={category.image}></img>
+            <img src={favor.image}></img>
           </div>
           <div className="info-wrapper flex-col">
-            <h3>{category.name}</h3>
+            <p>{favor.description}</p>
           </div>
         </div>
       ))}
@@ -20,4 +20,4 @@ const CategoryCard = ({ categories, onClick }) => {
   )
 }
 
-export default CategoryCard
+export default FavorCard
