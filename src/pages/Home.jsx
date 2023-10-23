@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { GetCategory } from '../services/Category'
 import CategoryCard from '../components/CategoryCard'
-import Category from './Category'
 
 const Home = () => {
   const [categories, setCategories] = useState([])

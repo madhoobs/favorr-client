@@ -13,7 +13,6 @@ const Category = () => {
     const handleFavors = async () => {
       const data = await GetFavorByCategory(category)
       setFavors(data)
-      console.log(data)
     }
     handleFavors()
   }, [])
