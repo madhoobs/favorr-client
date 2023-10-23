@@ -4,10 +4,11 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Category from './pages/Category'
 import { CheckSession } from './services/Auth'
 import './App.css'
 
-const App = () => {
+const App = ({ categories }) => {
   const [user, setUser] = useState(null)
 
   const handleLogOut = () => {
@@ -36,6 +37,10 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
+          <Route
+            path="/category"
+            element={<Category categories={categories} />}
+          />
         </Routes>
       </main>
     </div>
