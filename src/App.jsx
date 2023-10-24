@@ -10,27 +10,8 @@ import FavorForm from './pages/FavorForm'
 import { CheckSession } from './services/Auth'
 import './App.css'
 
-const App = ({ categories, favors }) => {
+const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
   const [user, setUser] = useState(null)
-  const [newFavor, setNewFavor] = useState({
-    id: '',
-    img: '',
-    description: ''
-  })
-  const addFavor = (e) => {
-    e.preventDefault()
-    const currentFavors = favors
-    const createdFavor = {
-      ...newFavor,
-      id: parseInt(favors.length + 1)
-    }
-    currentFavors.push(createdFavor)
-    setFavor(currentFavors)
-    setNewFavor({ id: '', img: '', description: '' })
-  }
-  const handleChangeFavor = (e) => {
-    setNewFavor({ ...newFavor, [e.target.deescription]: e.target.value })
-  }
 
   const handleLogOut = () => {
     //Reset all auth related state and clear localStorage
@@ -63,7 +44,7 @@ const App = ({ categories, favors }) => {
             element={<Category categories={categories} />}
           />
           <Route
-            path="/favor"
+            path="/favor/:favorid"
             element={<Favor favors={favors} setUser={setUser} />}
           />
           <Route
@@ -74,8 +55,9 @@ const App = ({ categories, favors }) => {
                 addFavor={addFavor}
                 handleChangeFavor={handleChangeFavor}
               />
-            }/>
-           <Route
+            }
+          />
+          <Route
             path="/category/:category"
             element={<Category categories={categories} />}
           />

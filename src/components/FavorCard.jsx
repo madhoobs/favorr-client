@@ -1,4 +1,3 @@
-
 const FavorCard = ({ favors, onClick }) => {
   return (
     <div>
@@ -6,8 +5,8 @@ const FavorCard = ({ favors, onClick }) => {
         <div
           className="card game-card"
           key={favor._id}
-          id={favor._id}
-          onClick={onClick}
+          value={favor._id}
+          onClick={() => onClick(favor._id)}
         >
           <div className="img-wrapper">
             <img src={favor.image}></img>
