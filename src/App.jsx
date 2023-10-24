@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Profile from './pages/Profile'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Category from './pages/Category'
@@ -60,6 +61,7 @@ const App = ({ categories, favors }) => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
+          <Route path="/profile/:username" element={<Profile />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route
@@ -78,8 +80,9 @@ const App = ({ categories, favors }) => {
                 addFavor={addFavor}
                 handleChangeFavor={handleChangeFavor}
               />
-            }/>
-           <Route
+            }
+          />
+          <Route
             path="/category/:category"
             element={<Category categories={categories} />}
           />
