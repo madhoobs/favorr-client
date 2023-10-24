@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { ViewProfile } from '../services/Auth'
 import { useNavigate, useParams } from 'react-router-dom'
 import { EditProfile } from '../services/Auth'
-import { response } from 'express'
 
 const EditProfilePage = () => {
   let navigate = useNavigate()
@@ -39,7 +38,7 @@ const EditProfilePage = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h3>{profile.username}</h3>
+        <h3>Edit My Profile</h3>
         <input
           type="text"
           name={'username'}

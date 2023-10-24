@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { GetFavorByCategory } from '../services/Favor'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import FavorCard from '../components/FavorCard'
 
 const Category = () => {

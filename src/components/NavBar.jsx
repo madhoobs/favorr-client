@@ -33,14 +33,10 @@ const NavBar = ({ user, handleLogOut }) => {
           </NavLink>
           <ul className="dropdown" id="profile">
             <li>
-              <NavLink to={`/profile/${user.username}`}>Profile</NavLink>
+              <NavLink to={`/profile/${user.username}`}>My Profile</NavLink>
             </li>
             <li>
-              <NavLink to="/favor/new">Post a Favor</NavLink>
-            </li>
-            <li className="separator"></li>
-            <li>
-              <NavLink to="#">Settings</NavLink>
+              <NavLink to="/favoradd">New Favor</NavLink>
             </li>
             <li className="separator"></li>
             <li>
