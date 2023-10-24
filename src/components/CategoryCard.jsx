@@ -1,18 +1,22 @@
+import '../style/CategoryCard.css'
 const CategoryCard = ({ categories, onClick }) => {
   return (
-    <div>
+    <div class="wrapper">
       {categories.map((category) => (
         <div
-          className="card game-card"
+          class="card"
           key={category._id}
           id={category.name}
           onClick={onClick}
         >
-          <div className="img-wrapper">
-            <img src={category.image}></img>
+          <div class="poster">
+            <img
+              src="https://i.postimg.cc/jjBSrfnQ/poster1-img.jpg"
+              alt={category.name}
+            ></img>
           </div>
-          <div className="info-wrapper flex-col">
-            <h3>{category.name}</h3>
+          <div class="details">
+            <h1>{category.name}</h1>
           </div>
         </div>
       ))}

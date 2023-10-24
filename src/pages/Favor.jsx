@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import { GetFavor } from '../services/Favor'
+import { GetFavorByUser } from '../services/Favor'
 
 const Favor = ({ user }) => {
   const [favors, setFavors] = useState([])
 
   useEffect(() => {
     const handleFavors = async () => {
-      const data = await GetFavor()
+      const data = await GetFavorByUser()
       setFavors(data)
     }
     handleFavors()
