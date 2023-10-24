@@ -1,13 +1,14 @@
 import React from 'react'
 
-const AboutPage = () => {
+const About = () => {
   return (
     <div>
       <h1>About Us</h1>
       <p>
-        Welcome to our favorr website! We are a platform that connects
+        Welcome to Favorr website! We are a platform that connects
         freelancers and clients from all over the world, providing a marketplace
-        for digital services.
+        for digital services. This website is done for educational purposes, and
+        it deliberately clones the famous freelance services marketplace Fiverr.
       </p>
 
       <h2>Our Mission</h2>
@@ -40,9 +41,8 @@ const AboutPage = () => {
         <li>Efficient communication and collaboration tools</li>
         <li>Quality assurance and customer support</li>
       </ul>
-      <h6> Our idea come similar to fiverr website </h6>
     </div>
   )
 }
 
-export default AboutPage
+export default About
