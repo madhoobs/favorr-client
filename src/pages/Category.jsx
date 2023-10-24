@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { GetFavorByCategory } from '../services/Favor'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import FavorCard from '../components/FavorCard'
 
 const Category = () => {
   const [favors, setFavors] = useState([])
+  let navigate = useNavigate()
   const location = useLocation()
   // Access state passed from Home Page
   let category = location.state.category
@@ -17,10 +18,16 @@ const Category = () => {
     handleFavors()
   }, [])
 
+  const onClick = (id) => {
+    // Navigating to specific Category Page & passing state as prop
+    console.log(id)
+    navigate('/favor/' + id)
+  }
+
   return (
     <div>
       <h3>{category} Favors</h3>
-      <FavorCard favors={favors} />
+      <FavorCard favors={favors} onClick={onClick} />
     </div>
   )
 }

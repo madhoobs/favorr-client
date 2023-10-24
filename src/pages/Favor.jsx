@@ -1,27 +1,28 @@
 import { useState, useEffect } from 'react'
-import { GetFavorByUser } from '../services/Favor'
+import { useParams, Link } from 'react-router-dom'
+import { GetFavor } from '../services/Favor'
 
-const Favor = ({ user }) => {
-  const [favors, setFavors] = useState([])
+const Favor = () => {
+  const [favor, setFavor] = useState('')
+
+  let { favorid } = useParams()
 
   useEffect(() => {
-    const handleFavors = async () => {
-      const data = await GetFavorByUser()
-      setFavors(data)
+    const handleFavor = async () => {
+      const selectedFavor = await GetFavor(favorid)
+      setFavor(selectedFavor)
     }
-    handleFavors()
-  }, [])
+    handleFavor()
+  }, [favor, favorid])
 
-  return (
+  return favor ? (
     <div>
-      {favors.map((favor) => (
-        <div key={favor.id}>
-          <h2>{favor.user.firstname}</h2>
-          <h3>{favor.description}</h3>
-        </div>
-      ))}
+      <div key={favor.id}>
+        <h2>{favor.user.firstname}</h2>
+        <h3>{favor.description}</h3>
+      </div>
     </div>
-  )
+  ) : null
 }
 
 export default Favor
