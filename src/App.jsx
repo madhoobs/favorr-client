@@ -4,6 +4,8 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import About from './pages/About'
+import Contact from './pages/Contact'
 import Category from './pages/Category'
 import Favor from './pages/Favor'
 import FavorForm from './pages/FavorForm'
@@ -58,6 +60,8 @@ const App = ({ categories, favors }) => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="/category"
             element={<Category categories={categories} />}
