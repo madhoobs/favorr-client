@@ -1,3 +1,4 @@
+
 const FavorCard = ({ favors, onClick }) => {
   return (
     <div>
