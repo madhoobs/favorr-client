@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
 
-const CategoryDropdown = ({ categories, onClick }) => {
+const CategoryDropdown = ({ categories }) => {
   return (
     <ul className="dropdown" id="categories">
       {categories.map((category) => (
         <li key={category._id}>
-          <a onClick={onClick}>{category.name}</a>
+          <NavLink to={`/category/${category.name}`}>{category.name}</NavLink>
         </li>
       ))}
       <li className="separator"></li>

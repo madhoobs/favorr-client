@@ -7,7 +7,6 @@ import CategoryDropdown from './CategoryNavDropdown'
 const NavBar = ({ user, handleLogOut }) => {
   const script = () => import('../style/nav.js')
   const [categories, setCategories] = useState([])
-  let navigate = useNavigate()
 
   useEffect(() => {
     const loadScript = async () => {
@@ -20,15 +19,6 @@ const NavBar = ({ user, handleLogOut }) => {
     loadScript()
     handleCategories()
   }, [])
-
-  const onClick = (e) => {
-    // Navigating to specific Category Page & passing state as prop
-    navigate('/category/' + e.currentTarget.innerText, {
-      state: {
-        category: e.currentTarget.innerText
-      }
-    })
-  }
 
   let userOptions
   if (user) {
@@ -102,7 +92,7 @@ const NavBar = ({ user, handleLogOut }) => {
                 >
                   Categories <i className="fa fa-angle-down"></i>
                 </NavLink>
-                <CategoryDropdown categories={categories} onClick={onClick} />
+                <CategoryDropdown categories={categories} />
               </li>
               <li>
                 <NavLink to="/about">About</NavLink>
