@@ -1,24 +1,26 @@
 import { useState, useEffect } from 'react'
-import { GetCategory } from '../services/Category'
+import { GetFavorByCategory } from '../services/Favor'
+import { useLocation } from 'react-router-dom'
+import FavorCard from '../components/FavorCard'
 
 const Category = () => {
-  const [categories, setCategories] = useState([])
+  const [favors, setFavors] = useState([])
+  const location = useLocation()
+  // Access state passed from Home Page
+  let category = location.state.category
 
   useEffect(() => {
-    const handleCategories = async () => {
-      const data = await GetCategory()
-      setCategories(data)
+    const handleFavors = async () => {
+      const data = await GetFavorByCategory(category)
+      setFavors(data)
     }
-    handleCategories()
+    handleFavors()
   }, [])
 
   return (
     <div>
-      {categories.map((category) => (
-        <div key={category.id}>
-          <h3>{category.name}</h3>
-        </div>
-      ))}
+      <h3>{category} Favors</h3>
+      <FavorCard favors={favors} />
     </div>
   )
 }

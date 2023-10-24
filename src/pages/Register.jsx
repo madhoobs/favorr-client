@@ -40,7 +40,7 @@ const Register = () => {
     // Login user after registering successfully (not working properly)
     const payload = await LoginUser(formValues)
     setUser(payload)
-    navigate('/home')
+    navigate('/')
   }
 
   return (

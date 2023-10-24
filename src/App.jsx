@@ -55,7 +55,7 @@ const App = ({ categories, favors }) => {
       <NavBar user={user} handleLogOut={handleLogOut} />
       <main>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
           <Route
@@ -74,7 +74,10 @@ const App = ({ categories, favors }) => {
                 addFavor={addFavor}
                 handleChangeFavor={handleChangeFavor}
               />
-            }
+            }/>
+           <Route
+            path="/category/:category"
+            element={<Category categories={categories} />}
           />
         </Routes>
       </main>
