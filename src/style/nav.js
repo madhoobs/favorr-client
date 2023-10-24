@@ -1,6 +1,5 @@
 let dropdowns = document.querySelectorAll('.navbar .dropdown-toggler')
 let dropdownIsOpen = false
-console.log(dropdowns)
 
 // Handle dropdown menues
 if (dropdowns.length) {
