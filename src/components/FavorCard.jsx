@@ -2,16 +2,11 @@ const FavorCard = ({ favors, onClick }) => {
   return (
     <div>
       {favors.map((favor) => (
-        <div
-          className="card game-card"
-          key={favor._id}
-          value={favor._id}
-          onClick={() => onClick(favor._id)}
-        >
-          <div className="img-wrapper">
+        <div key={favor._id} id={favor._id} onClick={onClick}>
+          <div>
             <img src={favor.image}></img>
           </div>
-          <div className="info-wrapper flex-col">
+          <div>
             <p>{favor.description}</p>
           </div>
         </div>
