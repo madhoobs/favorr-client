@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { GetCategory } from '../services/Category'
 import '../style/nav.css'
@@ -16,7 +16,10 @@ const NavBar = ({ user, handleLogOut }) => {
       const data = await GetCategory()
       setCategories(data)
     }
-    loadScript()
+    setTimeout(() => {
+      // This fixes the delay that makes the page load before the dropdown script loads
+      loadScript()
+    }, 50)
     handleCategories()
   }, [])
 

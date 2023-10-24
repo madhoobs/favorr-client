@@ -1,5 +1,6 @@
 let dropdowns = document.querySelectorAll('.navbar .dropdown-toggler')
 let dropdownIsOpen = false
+console.log(dropdowns)
 
 // Handle dropdown menues
 if (dropdowns.length) {
@@ -45,7 +46,7 @@ window.addEventListener('mouseup', (event) => {
 })
 
 // Open links in mobiles
-function handleSmallScreens() {
+const handleSmallScreens = () => {
   document.querySelector('.navbar-toggler').addEventListener('click', () => {
     let navbarMenu = document.querySelector('.navbar-menu')
 
