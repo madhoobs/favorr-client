@@ -10,7 +10,8 @@ import Contact from './pages/Contact'
 import Category from './pages/Category'
 import Favor from './pages/Favor'
 import FavorForm from './pages/FavorForm'
-import { CheckSession } from './services/Auth'
+import EditProfilePage from './pages/EditProfilePage'
+import { CheckSession, EditProfile } from './services/Auth'
 import './App.css'
 
 const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
@@ -43,6 +44,7 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
           <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/profile/edit/:username" element={<EditProfilePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route

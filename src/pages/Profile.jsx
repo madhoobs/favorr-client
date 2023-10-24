@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ViewProfile } from '../services/Auth'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const Profile = () => {
   const [profile, setProfile] = useState('')
@@ -16,9 +16,10 @@ const Profile = () => {
 
   return (
     <div>
-      <div class="profile-pic">
-        <label class="-label" for="file">
-          <span class="glyphicon glyphicon-camera"></span>
+      <Link to={`/profile/edit/${username}`}>Edit Profile</Link>
+      <div className="profile-pic">
+        <label className="-label" htmlFor="file">
+          <span className="glyphicon glyphicon-camera"></span>
           <span>Change Image</span>
         </label>
         <input id="file" type="file" />
