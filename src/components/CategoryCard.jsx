@@ -10,10 +10,7 @@ const CategoryCard = ({ categories, onClick }) => {
           onClick={onClick}
         >
           <div class="poster">
-            <img
-              src="https://i.postimg.cc/jjBSrfnQ/poster1-img.jpg"
-              alt={category.name}
-            ></img>
+            <img src={`/${category.image}`} alt={category.name}></img>
           </div>
           <div class="details">
             <h1>{category.name}</h1>
