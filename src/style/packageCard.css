@@ -1,0 +1,61 @@
+body {
+
+  text-align: center;
+}
+
+
+.packageplans {
+  display: flex;
+  justify-content: center;
+}
+
+.packageplan {
+  position: absolute;
+  color: #fcac0c;
+  background: linear-gradient(-45deg, #00a1ab, #3741a0);
+  width: 200px;
+  right: 5%;
+  padding: 2em;
+  border-radius: 1em;
+  margin: 0 0.5em;
+}
+
+.packageplan.lite {
+  color: black;
+  background: #e5e3e8;
+}
+
+.packageplan__title {
+  text-transform: uppercase;
+  margin: 0 0 1em;
+}
+
+.packageplan__price {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0;
+}
+
+.packageplan__price.darkprice {
+    color: #00CDAC
+}
+
+.packageplan__description {
+  margin: 2em 0;
+  line-height: 1.5;
+}
+
+.packageplan__button {
+  background: #4e4e4e;
+  color: #fcac0c;
+  text-decoration: none;
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.packageplan__button.darkbutton{
+    background-color: #fcac0c;
+    color: white;
+}

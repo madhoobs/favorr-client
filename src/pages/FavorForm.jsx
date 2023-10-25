@@ -22,13 +22,13 @@ const FavorForm = ({ user }) => {
     image: '',
     description: '',
     category: '',
-    user: '',
+    user: ''
   })
   const [newPackage, setNewPackage] = useState({
     price: 0,
     description: '',
     tier: '',
-    favor: '',
+    favor: ''
   })
 
   const handleSubmit = async (e) => {
@@ -49,15 +49,19 @@ const FavorForm = ({ user }) => {
   return (
     <div>
       <h1>Add A Favor</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
+        <label className="label">Image:</label>
         <input
+          className="input"
           type="text"
           value={newFavor.image}
           onChange={handleChangeFavor}
           name={'image'}
           placeholder={'image'}
         />
+        <label className="label">Description:</label>
         <input
+          className="input"
           type="text-area"
           value={newFavor.description}
           onChange={handleChangeFavor}
@@ -65,7 +69,9 @@ const FavorForm = ({ user }) => {
           placeholder={'description'}
         />
         <div>
+          <label className="label">Category:</label>
           <select
+            className="input"
             id="CategoryType"
             name="category"
             onChange={handleChangeFavor}
@@ -81,7 +87,7 @@ const FavorForm = ({ user }) => {
           handleChangePackage={handleChangePackage}
           newPackage={newPackage}
         />
-        <button>Submit</button>
+        <button className="button">Submit</button>
       </form>
     </div>
   )
