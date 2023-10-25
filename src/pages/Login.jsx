@@ -21,13 +21,13 @@ const Login = ({ setUser }) => {
   }
 
   return (
-    <div>
+    <div className="container" style={{ padding: '50px 0 50px 0' }}>
+      <h1 style={{ textAlign: 'center' }}>Login to your account</h1>
+      <br />
       <div>
         <form className="form" onSubmit={handleSubmit}>
-          <h2>Login to your account</h2>
-          <br /> <br />
           <label className="label" htmlFor="username">
-            Username or Email:
+            Username or Email
           </label>
           <input
             onChange={handleChange}
@@ -38,7 +38,7 @@ const Login = ({ setUser }) => {
             required
           />
           <label className="label" htmlFor="password">
-            Password:
+            Password
           </label>
           <input
             onChange={handleChange}

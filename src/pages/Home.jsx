@@ -36,7 +36,7 @@ const Home = () => {
             </div>
             <br />
             <h1>
-              Freelancing <br /> Redefined
+              <b>Freelancing</b> <br /> <i>Redefinedd.</i>
             </h1>
             <div className="circle blue"></div>
             <div className="square red"></div>
