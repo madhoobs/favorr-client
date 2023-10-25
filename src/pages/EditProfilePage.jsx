@@ -36,38 +36,69 @@ const EditProfilePage = () => {
   }, [])
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h3>Edit My Profile</h3>
+    <div className="container" style={{ padding: '50px 0 50px 0' }}>
+      <h1 style={{ textAlign: 'center' }}>Edit My Profile</h1>
+      <br />
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <label className="contact-label" htmlFor="name">
+          Username
+        </label>
         <input
           type="text"
+          className="contact-input"
           name={'username'}
           placeholder={'Username'}
           value={newProfile.username}
           onChange={handleChange}
+          required
         />
+
+        <label className="contact-label" htmlFor="email">
+          Email
+        </label>
         <input
           type="text"
+          className="contact-input"
           name={'email'}
           placeholder={'Email'}
           value={newProfile.email}
           onChange={handleChange}
+          required
         />
+
+        <label className="contact-label" htmlFor="firstname">
+          First Name
+        </label>
         <input
           type="text"
+          className="contact-input"
           name={'firstname'}
           placeholder={'First Name'}
           value={newProfile.firstname}
           onChange={handleChange}
+          required
         />
+        <label className="contact-label" htmlFor="lastname">
+          Last Name
+        </label>
         <input
           type="text"
+          className="contact-input"
           name={'lastname'}
           placeholder={'Last Name'}
           value={newProfile.lastname}
           onChange={handleChange}
+          required
         />
-        <button>Edit Profile</button>
+        <br />
+        <br />
+        <button
+          className="btn btn-warning"
+          style={{ width: '100%' }}
+          type="submit"
+        >
+          Edit Profile
+        </button>
       </form>
     </div>
   )

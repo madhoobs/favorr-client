@@ -38,7 +38,26 @@ const Profile = ({ user }) => {
     </button>
   )
 
-  let favorCards = favors ? <FavorCard favors={favors} /> : <div></div>
+  let favorCards = favors ? (
+    <div className="card-deck">
+      {favors.map((favor) => (
+        <div
+          className="card"
+          style={{ width: '18rem', marginBottom: '2rem' }}
+          key={favor._id}
+          id={favor._id}
+          onClick={() => onClick(favor._id)}
+        >
+          <img src={favor.image} className="card-img-top" alt="Favor Image" />
+          <div className="card-body">
+            <p className="card-text">{favor.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div></div>
+  )
 
   return favors ? (
     <section className="vh-100" style={{ backgroundColor: '#eee' }}>
@@ -81,6 +100,21 @@ const Profile = ({ user }) => {
                       <p className="text-muted mb-0">Orders</p>
                     </div>
                   </div>
+                  <br />
+                  <a
+                    className="btn btn-outline-warning"
+                    href={`/profile/edit/${username}`}
+                    style={{ margin: '5px', width: '90%' }}
+                  >
+                    Edit Profile
+                  </a>
+                  <a
+                    className="btn btn-outline-warning"
+                    href={`/profile/security/${username}`}
+                    style={{ margin: '5px', width: '90%' }}
+                  >
+                    Change Password
+                  </a>
                 </div>
               </div>
             </div>
@@ -94,7 +128,6 @@ const Profile = ({ user }) => {
                   <h3 className="mb-3">{profile.firstname}'s Favors</h3>
                   <hr className="my-4"></hr>
                   {favorCards}
-                  <br />
                   <div className="d-flex justify-content-start align-items-center">
                     <p className="mb-0 text-uppercase">
                       <span className="text-muted small">Show All</span>
