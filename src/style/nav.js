@@ -45,7 +45,7 @@ window.addEventListener('mouseup', (event) => {
 })
 
 // Open links in mobiles
-function handleSmallScreens() {
+const handleSmallScreens = () => {
   document.querySelector('.navbar-toggler').addEventListener('click', () => {
     let navbarMenu = document.querySelector('.navbar-menu')
 

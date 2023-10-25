@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { GetCategory } from '../services/Category'
 import '../style/nav.css'
@@ -7,7 +7,6 @@ import CategoryDropdown from './CategoryNavDropdown'
 const NavBar = ({ user, handleLogOut }) => {
   const script = () => import('../style/nav.js')
   const [categories, setCategories] = useState([])
-  let navigate = useNavigate()
 
   useEffect(() => {
     const loadScript = async () => {
@@ -17,18 +16,12 @@ const NavBar = ({ user, handleLogOut }) => {
       const data = await GetCategory()
       setCategories(data)
     }
-    loadScript()
+    setTimeout(() => {
+      // This fixes the delay that makes the page load before the dropdown script loads
+      loadScript()
+    }, 50)
     handleCategories()
   }, [])
-
-  const onClick = (e) => {
-    // Navigating to specific Category Page & passing state as prop
-    navigate('/category/' + e.currentTarget.innerText, {
-      state: {
-        category: e.currentTarget.innerText
-      }
-    })
-  }
 
   let userOptions
   if (user) {
@@ -40,14 +33,10 @@ const NavBar = ({ user, handleLogOut }) => {
           </NavLink>
           <ul className="dropdown" id="profile">
             <li>
-              <NavLink to={`/profile/${user.username}`}>Profile</NavLink>
+              <NavLink to={`/profile/${user.username}`}>My Profile</NavLink>
             </li>
             <li>
-              <NavLink to="/favor/new">Post a Favor</NavLink>
-            </li>
-            <li className="separator"></li>
-            <li>
-              <NavLink to="#">Settings</NavLink>
+              <NavLink to="/favoradd">New Favor</NavLink>
             </li>
             <li className="separator"></li>
             <li>
@@ -102,7 +91,7 @@ const NavBar = ({ user, handleLogOut }) => {
                 >
                   Categories <i className="fa fa-angle-down"></i>
                 </NavLink>
-                <CategoryDropdown categories={categories} onClick={onClick} />
+                <CategoryDropdown categories={categories} />
               </li>
               <li>
                 <NavLink to="/about">About</NavLink>

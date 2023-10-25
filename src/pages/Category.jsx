@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 import { GetFavorByCategory } from '../services/Favor'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import FavorCard from '../components/FavorCard'
 
 const Category = () => {
   const [favors, setFavors] = useState([])
   let navigate = useNavigate()
-  const location = useLocation()
-  // Access state passed from Home Page
-  let category = location.state.category
+  // Access category passed from Params
+  let { category } = useParams()
 
   useEffect(() => {
     const handleFavors = async () => {

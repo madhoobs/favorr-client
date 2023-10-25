@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { LoginUser } from '../services/Auth'
+import '../style/auth.css'
 
 const Login = ({ setUser }) => {
   let navigate = useNavigate()
@@ -22,30 +23,43 @@ const Login = ({ setUser }) => {
   return (
     <div>
       <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username">Username or Email</label>
-            <input
-              onChange={handleChange}
-              name="username"
-              type="text"
-              value={formValues.username}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              value={formValues.password}
-              required
-            />
-          </div>
-          <button disabled={!formValues.username || !formValues.password}>
+        <form className="form" onSubmit={handleSubmit}>
+          <h2>Login to your account</h2>
+          <br /> <br />
+          <label className="label" htmlFor="username">
+            Username or Email:
+          </label>
+          <input
+            onChange={handleChange}
+            name="username"
+            className="input"
+            type="text"
+            value={formValues.username}
+            required
+          />
+          <label className="label" htmlFor="password">
+            Password:
+          </label>
+          <input
+            onChange={handleChange}
+            name="password"
+            className="input"
+            type="password"
+            value={formValues.password}
+            required
+          />
+          <button
+            className="button"
+            type="submit"
+            disabled={!formValues.username || !formValues.password}
+          >
             Login
           </button>
+          <br />
+          <p>
+            Don&apos;t have an account?{' '}
+            <Link to="/register">Register Here</Link>
+          </p>
         </form>
       </div>
     </div>
