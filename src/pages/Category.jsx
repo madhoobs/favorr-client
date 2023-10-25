@@ -15,7 +15,7 @@ const Category = () => {
       setFavors(data)
     }
     handleFavors()
-  }, [])
+  }, [favors])
 
   const onClick = (id) => {
     // Navigating to specific Category Page & passing state as prop

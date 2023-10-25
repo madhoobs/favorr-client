@@ -6,7 +6,7 @@ const CategoryCard = ({ categories, onClick }) => {
       <div className="card-grid">
         {categories.map((category) => (
           <a
-            className="card"
+            className="category-card"
             key={category._id}
             id={category.name}
             onClick={onClick}

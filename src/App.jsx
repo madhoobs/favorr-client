@@ -16,6 +16,7 @@ import Footer from './components/Footer'
 import Order from './pages/Order'
 import { CheckSession } from './services/Auth'
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.css'
 
 const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
   const [user, setUser] = useState(null)
@@ -42,6 +43,10 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
     <div>
       <NavBar user={user} handleLogOut={handleLogOut} />
       <main>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        ></link>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />

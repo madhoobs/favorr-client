@@ -13,7 +13,7 @@ const Home = () => {
       setCategories(data)
     }
     handleCategories()
-  }, [])
+  })
 
   const onClick = (e) => {
     // Navigating to specific Category Page & passing state as prop
