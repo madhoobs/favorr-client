@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { GetFavor } from '../services/Favor'
+import '../style/favor.css'
 
 const Favor = () => {
   const [favor, setFavor] = useState('')
@@ -18,7 +19,9 @@ const Favor = () => {
   return favor ? (
     <div>
       <div key={favor.id}>
-        <h2>{favor.user.firstname}</h2>
+        <h2>
+          {favor.user.firstname} {favor.user.lastname}
+        </h2>
         <h3>{favor.description}</h3>
       </div>
     </div>
