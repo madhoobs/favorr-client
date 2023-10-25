@@ -11,8 +11,8 @@ import Category from './pages/Category'
 import Favor from './pages/Favor'
 import FavorForm from './pages/FavorForm'
 import EditProfilePage from './pages/EditProfilePage'
-import ChangePasswordPage from './pages/ChangePassword'
-import { CheckSession, EditProfile } from './services/Auth'
+import ChangePasswordPage from './pages/ChangePasswordPage'
+import { CheckSession } from './services/Auth'
 import './App.css'
 
 const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {

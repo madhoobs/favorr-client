@@ -17,6 +17,7 @@ const Profile = () => {
   return (
     <div>
       <Link to={`/profile/edit/${username}`}>Edit Profile</Link>
+      <Link to={`/profile/security/${username}`}>Change Password</Link>
       <div className="profile-pic">
         <label className="-label" htmlFor="file">
           <span className="glyphicon glyphicon-camera"></span>
