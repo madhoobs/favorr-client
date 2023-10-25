@@ -3,8 +3,11 @@ import { useState, useEffect } from 'react'
 import { GetCategory } from '../services/Category'
 import { CreateFavor } from '../services/Favor'
 
-const FavorForm = () => {
+const FavorForm = ({ user }) => {
   const [categories, setCategories] = useState([])
+  // const [userId, setUserId] = useState('')
+
+  // console.log(user)
   console.log(categories)
   let navigate = useNavigate()
 
@@ -20,21 +23,22 @@ const FavorForm = () => {
     id: '',
     image: '',
     description: '',
-    category: null
-    // user: user._id
+    category: null,
+    user: user.id
   })
+  console.log('heereee', newFavor)
   const addFavor = async (e) => {
     e.preventDefault()
 
     await CreateFavor(newFavor)
-    setNewFavor({ id: '', image: '', description: '' })
+    setNewFavor({ id: '', image: '', description: '', user: '' })
   }
   const handleSubmit = (e) => {
     addFavor(e)
     navigate('/')
   }
   const handleChangeFavor = (e) => {
-    setNewFavor({ ...newFavor, [e.target.name]: e.target.value })
+    setNewFavor({ ...newFavor, [e.target.name]: e.target.value, user: user.id })
   }
 
   return (
