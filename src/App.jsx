@@ -45,7 +45,7 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
-          <Route path="/profile/:username" element={<Profile />} user={user} />
+          <Route path="/profile/:username" element={<Profile user={user} />} />
           <Route path="/profile/edit/:username" element={<EditProfilePage />} />
           <Route
             path="/profile/security/:username"
