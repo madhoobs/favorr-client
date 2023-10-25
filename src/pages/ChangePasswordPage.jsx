@@ -28,6 +28,67 @@ const ChangePasswordPage = () => {
   }
 
   return (
+    <div className="container" style={{ padding: '50px 0 50px 0' }}>
+      <h1 style={{ textAlign: 'center' }}>Change Password</h1>
+      <br />
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <label className="contact-label" htmlFor="name">
+          Current Password
+        </label>
+        <input
+          type="password"
+          className="contact-input"
+          name={'oldPassword'}
+          placeholder={'Current Password'}
+          value={newPassword.oldPassword}
+          onChange={handleChange}
+          required
+        />
+
+        <label className="contact-label" htmlFor="email">
+          New Password
+        </label>
+        <input
+          type="password"
+          className="contact-input"
+          name={'newPassword'}
+          placeholder={'New Password'}
+          value={newPassword.newPassword}
+          onChange={handleChange}
+          required
+        />
+
+        <label className="contact-label" htmlFor="firstname">
+          Confirm Password
+        </label>
+        <input
+          type="password"
+          className="contact-input"
+          name={'confirmPassword'}
+          placeholder={'Confirm Password'}
+          value={newPassword.confirmPassword}
+          onChange={handleChange}
+          required
+        />
+        <br />
+        <br />
+        <button
+          className="btn btn-warning"
+          style={{ width: '100%' }}
+          type="submit"
+          disabled={
+            !newPassword.oldPassword ||
+            !newPassword.newPassword ||
+            !newPassword.confirmPassword
+          }
+        >
+          Change Password
+        </button>
+      </form>
+    </div>
+  )
+
+  return (
     <div>
       <form onSubmit={handleSubmit}>
         <h3>Change Password</h3>
