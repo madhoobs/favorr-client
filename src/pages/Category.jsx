@@ -24,8 +24,12 @@ const Category = () => {
 
   return (
     <div>
-      <h3>{category} Favors</h3>
-      <FavorCard favors={favors} onClick={onClick} />
+      <div className="hero-section-title">
+        <h3>{category} Favors</h3>
+      </div>
+      <div className="hero-section">
+        <FavorCard favors={favors} onClick={onClick} />
+      </div>
     </div>
   )
 }

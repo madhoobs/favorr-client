@@ -25,7 +25,7 @@ const FavorForm = ({ user }) => {
     user: ''
   })
   const [newPackage, setNewPackage] = useState({
-    price: 0,
+    price: '',
     description: '',
     tier: '',
     favor: ''
@@ -47,35 +47,41 @@ const FavorForm = ({ user }) => {
   }
 
   return (
-    <div>
-      <h1>Add A Favor</h1>
+    <div className="container" style={{ padding: '50px 0 50px 0' }}>
+      <h1 style={{ textAlign: 'center' }}>Add a New Favor</h1>
+      <br />
       <form className="form" onSubmit={handleSubmit}>
-        <label className="label">Image:</label>
+        <label className="label">Favor Image</label>
         <input
           className="input"
           type="text"
           value={newFavor.image}
           onChange={handleChangeFavor}
           name={'image'}
-          placeholder={'image'}
+          placeholder={'Choose a descriptive image'}
+          required
         />
-        <label className="label">Description:</label>
+        <label className="label">Description</label>
         <input
           className="input"
-          type="text-area"
           value={newFavor.description}
           onChange={handleChangeFavor}
           name={'description'}
-          placeholder={'description'}
+          placeholder={'Enter your service description'}
+          required
         />
         <div>
-          <label className="label">Category:</label>
+          <label className="label">Category</label>
           <select
             className="input"
             id="CategoryType"
             name="category"
             onChange={handleChangeFavor}
+            required
           >
+            <option disabled selected>
+              Choose Favor Type
+            </option>
             {categories.map((category) => (
               <option key={category._id} value={category.name}>
                 {category.name}
@@ -87,7 +93,9 @@ const FavorForm = ({ user }) => {
           handleChangePackage={handleChangePackage}
           newPackage={newPackage}
         />
-        <button className="button">Submit</button>
+        <button className="btn btn-warning" disabled={!newFavor.category}>
+          Submit
+        </button>
       </form>
     </div>
   )
