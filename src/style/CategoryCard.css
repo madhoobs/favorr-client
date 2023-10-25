@@ -29,7 +29,7 @@ body {
 
 .hero-section {
   align-items: flex-start;
-  background-image: linear-gradient(15deg, #FFAC00 0%, #FFF192 150%);
+  background: #efefef;
   display: flex;
   min-height: 100%;
   justify-content: center;
@@ -60,6 +60,7 @@ body {
 .category-card {
   list-style: none;
   position: relative;
+  margin-top: -150px;
 }
 
 .category-card:before {
