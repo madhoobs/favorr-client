@@ -34,12 +34,12 @@ const NavBar = ({ user, handleLogOut }) => {
           <ul className="dropdown" id="profile">
             <li>
               <NavLink className="navitem" to={`/profile/${user.username}`}>
-                My Profile
+                Profile
               </NavLink>
             </li>
             <li>
               <NavLink className="navitem" to="/favoradd">
-                New Favor
+                Add New Favor
               </NavLink>
             </li>
             <li className="separator"></li>
@@ -60,13 +60,11 @@ const NavBar = ({ user, handleLogOut }) => {
         <NavLink to="/login">Sign in</NavLink>
       </li>
       <li>
-        <button
-          className="btn btn-outline-warning"
-          style={{ marginLeft: '10px', width: '80px' }}
-          to="/register"
-        >
-          Join
-        </button>
+        <NavLink to="/register" style={{ marginTop: '-6px' }}>
+          <button className="btn btn-outline-warning" style={{ width: '80px' }}>
+            Join
+          </button>
+        </NavLink>
       </li>
     </ul>
   )

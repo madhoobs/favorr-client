@@ -14,12 +14,20 @@ const Order = () => {
     handleOrder()
   }, [])
   return order.package ? (
-    <div>
+    <div className="container" style={{ padding: '50px 0 50px 0' }}>
+      <h1 style={{ textAlign: 'center' }}>Order Checkout</h1>
+      <br />
       <div key={order._id}>
-        <h2>{order.status}</h2>
-        <p>{order.package.price}</p>
-        <p>{order.package.tier}</p>
-        <p>{order.package.description}</p>
+        <h4>
+          <b>Package Tier:</b> {order.package.tier}
+        </h4>
+        <h4>
+          <b>Description:</b> {order.package.description}
+        </h4>
+        <h2>
+          <b>Total price:</b> ${order.package.price}
+        </h2>
+        <button className="btn btn-warning">Proceed to Checkout</button>
       </div>
     </div>
   ) : null

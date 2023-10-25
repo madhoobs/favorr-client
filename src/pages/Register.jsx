@@ -45,12 +45,12 @@ const Register = ({ setUser }) => {
   }
 
   return (
-    <div>
+    <div className="container" style={{ padding: '50px 0 50px 0' }}>
+      <h1 style={{ textAlign: 'center' }}>Create a new account</h1>
+      <br />
       <div>
         <div>
           <form className="form" onSubmit={handleSubmit}>
-            <h2>Create a new account</h2>
-            <br /> <br />
             <label className="label" htmlFor="email">
               Email:
             </label>
