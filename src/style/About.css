@@ -1,0 +1,41 @@
+.about-container {
+  max-width: 800px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.about-title {
+  font-size: 36px;
+  color: #fcac0c;
+  margin-bottom: 20px;
+}
+
+.about-description {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.about-subtitle {
+  font-size: 28px;
+  color: #fcac0c;
+  margin-top: 20px;
+}
+
+.about-list {
+  list-style-type: disc;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { RegisterUser, LoginUser } from '../services/Auth'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import '../style/auth.css'
 
-const Register = () => {
+const Register = ({ setUser }) => {
   let navigate = useNavigate()
 
   const [formValues, setFormValues] = useState({
@@ -46,79 +47,89 @@ const Register = () => {
   return (
     <div>
       <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="email">Email</label>
+        <div>
+          <form className="form" onSubmit={handleSubmit}>
+            <h2>Create a new account</h2>
+            <br /> <br />
+            <label className="label" htmlFor="email">
+              Email:
+            </label>
             <input
               onChange={handleChange}
               name="email"
+              className="input"
               type="email"
               value={formValues.email}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
+            <label className="label" htmlFor="password">
+              Password:
+            </label>
             <input
               onChange={handleChange}
-              type="password"
               name="password"
+              className="input"
+              type="password"
               value={formValues.password}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label className="label" htmlFor="confirmPassword">
+              Confirm Password:
+            </label>
             <input
               onChange={handleChange}
-              type="password"
               name="confirmPassword"
+              className="input"
+              type="password"
               value={formValues.confirmPassword}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="username">Username</label>
+            <label className="label" htmlFor="username">
+              Username:
+            </label>
             <input
               onChange={handleChange}
               name="username"
+              className="input"
               type="text"
               value={formValues.username}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="firstname">First Name</label>
+            <label className="label" htmlFor="firstname">
+              First Name:
+            </label>
             <input
               onChange={handleChange}
               name="firstname"
+              className="input"
               type="text"
               value={formValues.firstname}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="lastname">Last Name</label>
+            <label className="label" htmlFor="lastname">
+              Last Name:
+            </label>
             <input
               onChange={handleChange}
               name="lastname"
+              className="input"
               type="text"
               value={formValues.lastname}
               required
             />
-          </div>
-          <button
-            // This can be improved to be more informative
-            disabled={
-              !formValues.email ||
-              !formValues.username ||
-              !formValues.password ||
-              formValues.confirmPassword != formValues.password
-            }
-          >
-            Register
-          </button>
-        </form>
+            <button
+              className="button"
+              type="submit"
+              disabled={!formValues.username || !formValues.password}
+            >
+              Register
+            </button>
+            <br />
+            <p>
+              Already have an account? <Link to="/login">Sign in</Link>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   )

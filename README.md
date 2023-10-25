@@ -48,4 +48,8 @@ This platform allows users to register as either service providers or seekers. S
 
 ### **_Credits_**
 
+- Navigation Bar: [Mustafa Omar on Codepen](https://codepen.io/themustafaomar/pen/VKbQye)
+- Category Card: [Steve Meredith on Codepen](https://codepen.io/steveeeie/details/NVWMEM)
+- Footer: [Matheus Almeida on Codepen](https://codepen.io/matheusalmeida/pen/aeLMMr)
+
 ##### Images: []()

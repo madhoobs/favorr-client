@@ -10,6 +10,9 @@ import Contact from './pages/Contact'
 import Category from './pages/Category'
 import Favor from './pages/Favor'
 import FavorForm from './pages/FavorForm'
+import EditProfilePage from './pages/EditProfilePage'
+import ChangePasswordPage from './pages/ChangePasswordPage'
+import Footer from './components/Footer'
 import { CheckSession } from './services/Auth'
 import './App.css'
 
@@ -42,17 +45,19 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
-          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} user={user} />
+          <Route path="/profile/edit/:username" element={<EditProfilePage />} />
+          <Route
+            path="/profile/security/:username"
+            element={<ChangePasswordPage />}
+          />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route
             path="/category"
             element={<Category categories={categories} />}
           />
-          <Route
-            path="/favor/:favorid"
-            element={<Favor favors={favors} setUser={setUser} />}
-          />
+          <Route path="/favor/:favorid" element={<Favor favors={favors} />} />
           <Route
             path="/favoradd"
             element={
@@ -70,6 +75,7 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
           />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }

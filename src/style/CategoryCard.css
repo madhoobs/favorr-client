@@ -1,164 +1,117 @@
+:root {
+  --background-dark: #FFAC00;
+  --text-light: rgba(255, 255, 255, 0.6);
+  --text-lighter: rgba(255, 255, 255, 0.9);
+  --spacing-s: 8px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+  --width-container: 1200px;
+}
+
 * {
+  border: 0;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
 }
 
-.wrapper {
-  position: relative;
-  width: 100%;
+html {
   height: 100%;
-  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+body {
+  height: 100%;
+}
+
+.hero-section {
+  align-items: flex-start;
+  background-image: linear-gradient(15deg, #FFAC00 0%, #FFF192 150%);
   display: flex;
-  align-content: center;
+  min-height: 100%;
   justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  padding: var(--spacing-xxl) var(--spacing-l);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: var(--spacing-l);
+  grid-row-gap: var(--spacing-l);
+  max-width: var(--width-container);
+  width: 100%;
+}
+
+@media(min-width: 540px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 960px) {
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .card {
-  position: relative;
-  width: 325px;
-  height: 450px;
-  background: #000;
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-}
-
-.poster {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.poster::before {
-  content: '';
-  position: absolute;
-  bottom: -45%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  transition: .3s;
-}
-
-.card:hover .poster::before {
-  bottom: 0;
-}
-
-.poster img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: .3s;
-}
-
-.card:hover .poster img {
-  transform: scale(1.1);
-}
-
-.details {
-  position: absolute;
-  bottom: -100%;
-  left: 0;
-  width: 100%;
-  height: auto;
-  padding: 1.5em 1.5em 2em;
-  background: #000a;
-  backdrop-filter: blur(16px) saturate(120%);
-  transition: .3s;
-  color: #fff;
-  z-index: 2;
-}
-
-.card:hover .details {
-  bottom: 0;
-}
-
-.details h1,
-.details h2 {
-  font-weight: 700;
-}
-
-.details h1 {
-  font-size: 1.5em;
-  margin-bottom: 5px;
-}
-
-.details h2 {
-  font-weight: 400;
-  font-size: 1em;
-  margin-bottom: 10px;
-  opacity: .6;
-}
-
-.details .rating {
-  position: relative;
-  margin-bottom: 15px;
-  display: flex;
-  gap: .25em;
-}
-
-.details .rating i {
-  color: #e3c414;
-}
-
-.details .rating span {
-  margin-left: 0.25em;
-}
-
-.details .tags {
-  display: flex;
-  gap: .375em;
-  margin-bottom: .875em;
-  font-size: .85em;
-}
-
-.details .tags span {
-  padding: .35rem .65rem;
-  color: #fff;
-  border: 1.5px solid rgba(255 255 255 / 0.4);
-  border-radius: 4px;
-  border-radius: 50px;
-}
-
-.details .desc {
-  color: #fff;
-  opacity: .8;
-  line-height: 1.5;
-  margin-bottom: 1em;
-}
-
-.details .cast h3 {
-  margin-bottom: .5em;
-}
-
-.details .cast ul {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.625rem;
-  width: 100%;
-}
-
-.details .cast ul li {
   list-style: none;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1.5px solid #fff;
+  position: relative;
 }
 
-.details .cast ul li img {
+.card:before {
+  content: '';
+  display: block;
+  padding-bottom: 150%;
   width: 100%;
-  height: 100%;
+}
+
+.card__background {
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--spacing-l);
+  bottom: 0;
+  filter: brightness(0.75) saturate(1.2) contrast(0.85);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform-origin: center;
+  trsnsform: scale(1) translateZ(0);
+  transition:
+    filter 200ms linear,
+    transform 200ms linear;
+}
+
+.card:hover .card__background {
+  transform: scale(1.05) translateZ(0);
+}
+
+.card-grid:hover>.card:not(:hover) .card__background {
+  filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+}
+
+.card__content {
+  left: 0;
+  padding: var(--spacing-l);
+  position: absolute;
+  top: 0;
+}
+
+.card__category {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-s);
+  text-transform: uppercase;
+}
+
+.card__heading {
+  color: var(--text-lighter);
+  font-size: 1.9rem;
+  text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+  line-height: 1.4;
+  word-spacing: 100vw;
 }
