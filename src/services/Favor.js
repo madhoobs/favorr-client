@@ -20,7 +20,7 @@ export const GetFavorByUser = async () => {
 
 export const CreateFavor = async (data) => {
   try {
-    const res = await Client.post('/add', data)
+    const res = await Client.post('/favor/add', data)
     return res.data
   } catch (error) {
     throw error

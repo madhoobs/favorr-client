@@ -65,6 +65,7 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
                 newFavor={newFavor}
                 addFavor={addFavor}
                 handleChangeFavor={handleChangeFavor}
+                user={user}
               />
             }
           />

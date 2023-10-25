@@ -1,32 +1,46 @@
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { GetCategory } from '../services/Category'
 import { CreateFavor } from '../services/Favor'
 
-const FavorForm = (props) => {
+const FavorForm = ({ user }) => {
+  const [categories, setCategories] = useState([])
+  // const [userId, setUserId] = useState('')
+
+  // console.log(user)
+  console.log(categories)
   let navigate = useNavigate()
 
+  useEffect(() => {
+    const handleCategories = async () => {
+      const data = await GetCategory()
+      setCategories(data)
+    }
+    handleCategories()
+  }, [])
+
   const [newFavor, setNewFavor] = useState({
-    id: '',
     image: '',
-    description: ''
+    description: '',
+    category: '',
+    user: ''
   })
-  const addFavor = (e) => {
+  console.log('heereee', newFavor)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    CreateFavor.post(newFavor)
-    setNewFavor({ id: '', image: '', description: '' })
-  }
-  const handleSubmit = (e) => {
-    addFavor(e)
+    await CreateFavor(newFavor)
+    setNewFavor({ image: '', description: '', category: '', user: '' })
     navigate('/')
   }
   const handleChangeFavor = (e) => {
-    setNewFavor({ ...newFavor, [e.target.name]: e.target.value })
+    setNewFavor({ ...newFavor, [e.target.name]: e.target.value, user: user.id })
   }
 
   return (
     <div>
       <h1>Add A Favor</h1>
-      <form onSubmit={handleSubmit} addFavor={addFavor}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={newFavor.image}
@@ -41,12 +55,19 @@ const FavorForm = (props) => {
           name={'description'}
           placeholder={'description'}
         />
-        <select id="CategoryType" onChange={handleChangeFavor}>
-          <option>UX Design</option>
-          <option>Software Engineering</option>
-          <option>Graphic Design</option>
-          <option>Data Analytics</option>
-        </select>
+        <div>
+          <select
+            id="CategoryType"
+            name="category"
+            onChange={handleChangeFavor}
+          >
+            {categories.map((category) => (
+              <option key={category._id} value={category.name}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
         <button>Submit</button>
       </form>
     </div>

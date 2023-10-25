@@ -2,7 +2,7 @@ const FavorCard = ({ favors, onClick }) => {
   return (
     <div>
       {favors.map((favor) => (
-        <div key={favor._id} id={favor._id} onClick={onClick}>
+        <div key={favor._id} id={favor._id} onClick={() => onClick(favor._id)}>
           <div>
             <img src={favor.image}></img>
           </div>
