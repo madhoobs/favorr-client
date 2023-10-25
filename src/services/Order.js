@@ -17,9 +17,10 @@ export const GetOrder = async (orderId) => {
   }
 }
 
-export const CreateOrder = async (data) => {
+export const CreateOrder = async (packageId, data) => {
   try {
-    const res = await Client.post(`/add/packageID`, data)
+    const res = await Client.post(`/order/add/${packageId}`, data)
+    return res.data
   } catch (error) {
     throw error
   }

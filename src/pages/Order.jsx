@@ -1,28 +1,28 @@
 import { useState, useEffect } from 'react'
-import { GetOrderByUser } from '../services/Order'
+import { GetOrder } from '../services/Order'
+import { useParams } from 'react-router-dom'
 
-const Order = ({ Package }) => {
-  const [orders, setOrder] = useState([])
+const Order = () => {
+  const [order, setOrder] = useState('')
+  let { orderid } = useParams()
 
   useEffect(() => {
-    const handleFavors = async () => {
-      const data = await GetOrderByUser()
+    const handleOrder = async () => {
+      const data = await GetOrder(orderid)
       setOrder(data)
     }
-    handleFavors()
+    handleOrder()
   }, [])
-
-  return (
+  return order.package ? (
     <div>
-      {orders.map((order) => (
-        <div key={order.id}>
-          <h2>{order.price}</h2>
-          
-          <p>{order.description}</p>
-        </div>
-      ))}
+      <div key={order._id}>
+        <h2>{order.status}</h2>
+        <p>{order.package.price}</p>
+        <p>{order.package.tier}</p>
+        <p>{order.package.description}</p>
+      </div>
     </div>
-  )
+  ) : null
 }
 
 export default Order
