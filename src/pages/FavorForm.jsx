@@ -20,21 +20,17 @@ const FavorForm = ({ user }) => {
   }, [])
 
   const [newFavor, setNewFavor] = useState({
-    id: '',
     image: '',
     description: '',
-    category: null,
-    user: user.id
+    category: '',
+    user: ''
   })
   console.log('heereee', newFavor)
-  const addFavor = async (e) => {
-    e.preventDefault()
 
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     await CreateFavor(newFavor)
-    setNewFavor({ id: '', image: '', description: '', user: '' })
-  }
-  const handleSubmit = (e) => {
-    addFavor(e)
+    setNewFavor({ image: '', description: '', category: '', user: '' })
     navigate('/')
   }
   const handleChangeFavor = (e) => {
