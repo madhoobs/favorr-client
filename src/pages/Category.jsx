@@ -19,7 +19,6 @@ const Category = () => {
 
   const onClick = (id) => {
     // Navigating to specific Category Page & passing state as prop
-    console.log(id)
     navigate('/favor/' + id)
   }
 
