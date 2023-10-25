@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="logo-wrapper" alt="logo">
           <img className="logo" src="/logo.png" alt="Favorr Logo" />
         </div>
-        <slogan>Freelance Services Marketplace</slogan>
+        <span className="slogan">Freelance Services Marketplace</span>
       </div>
 
       <ul className="footer__nav">
