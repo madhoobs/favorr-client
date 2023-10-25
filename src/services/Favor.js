@@ -9,9 +9,9 @@ export const GetFavor = async (favorid) => {
   }
 }
 
-export const GetFavorByUser = async () => {
+export const GetFavorByUser = async (userid) => {
   try {
-    const res = await Client.get('/favor')
+    const res = await Client.get(`/favor/user/${userid}`)
     return res.data
   } catch (error) {
     throw error

@@ -27,8 +27,6 @@ const ChangePasswordPage = () => {
     setNewPassword({ ...newPassword, [e.target.name]: e.target.value })
   }
 
-  useEffect(() => {}, [])
-
   return (
     <div>
       <form onSubmit={handleSubmit}>

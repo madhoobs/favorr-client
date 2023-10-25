@@ -57,12 +57,12 @@ body {
   }
 }
 
-.card {
+.category-card {
   list-style: none;
   position: relative;
 }
 
-.card:before {
+.category-card:before {
   content: '';
   display: block;
   padding-bottom: 150%;

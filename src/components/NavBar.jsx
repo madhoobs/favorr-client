@@ -21,7 +21,7 @@ const NavBar = ({ user, handleLogOut }) => {
       loadScript()
     }, 50)
     handleCategories()
-  }, [])
+  })
 
   let userOptions
   if (user) {
@@ -33,14 +33,18 @@ const NavBar = ({ user, handleLogOut }) => {
           </NavLink>
           <ul className="dropdown" id="profile">
             <li>
-              <NavLink to={`/profile/${user.username}`}>My Profile</NavLink>
+              <NavLink className="navitem" to={`/profile/${user.username}`}>
+                My Profile
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/favoradd">New Favor</NavLink>
+              <NavLink className="navitem" to="/favoradd">
+                New Favor
+              </NavLink>
             </li>
             <li className="separator"></li>
             <li>
-              <NavLink onClick={handleLogOut} to="/">
+              <NavLink className="navitem" onClick={handleLogOut} to="/">
                 Logout
               </NavLink>
             </li>
@@ -56,7 +60,13 @@ const NavBar = ({ user, handleLogOut }) => {
         <NavLink to="/login">Sign in</NavLink>
       </li>
       <li>
-        <NavLink to="/register">Register</NavLink>
+        <button
+          className="btn btn-outline-warning"
+          style={{ marginLeft: '10px', width: '80px' }}
+          to="/register"
+        >
+          Join
+        </button>
       </li>
     </ul>
   )

@@ -1,55 +1,54 @@
-.favorcontainer {
-  margin-top: 5em;
-  display: flex;
-  justify-content: space-between;
-}
-
-.favorheader {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.favorheader img {
+.card-deck {
   width: 100%;
-  margin: 0;
-  padding: 0;
-  border-top-right-radius: 2%;
-  border-top-left-radius: 2%;
-
-}
-
-.favorcard {
-  position: relative;
-  left: 5%;
-  flex: 1;
+  display: flex;
+  margin: 10px auto;
+  flex-direction: row;
   flex-wrap: wrap;
-  max-width: 340px;
-  border-radius: 2%;
-  margin-right: 3em;
-  box-shadow: 3px 3px 25px 0px rgba(46,61,73,0.5);
-  opacity: .9;
-  transition: all .3s ease-in-out;
+  justify-content: center;
 }
 
-.favorcard:hover {
-  cursor: pointer;
-  opacity: 1;
-  box-shadow: 1px 1px 25px 0px rgba(46,61,73,0.4);
+.favor-image {
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.favorcard:last-child {
-  margin-right: 0;
-  
+.card {
+  margin: 0 auto;
 }
 
-.descr {
-  margin-top: 0;
-  padding: 1em 2em 0 2em;
-  color: #2e3d49;
+.card-content-user-info {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  background: #f7fafc;
+  border-radius: 0 0 10px 10px;
 }
 
-.descr p {
-  font-size: 1em;
-  margin-top: 5.5em;
-  padding-bottom: 1em;
+.card-content-user-info img {
+  width: 60px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.card-content-user-info h4 {
+  font-family: 'Roboto', sans-serif;
+}
+
+.card-content-user-info p {
+  font-family: 'Roboto', sans-serif;
+}
+
+.card-content-user-info .card-content-user-contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
 }
