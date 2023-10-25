@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { ViewProfile } from '../services/Auth'
 import { Link, useParams } from 'react-router-dom'
 
-const Profile = () => {
+const Profile = ({ user }) => {
   const [profile, setProfile] = useState('')
   let { username } = useParams()
 
@@ -14,10 +14,17 @@ const Profile = () => {
     handleProfile()
   }, [])
 
+  let editOptions =
+    user && user.username === username ? (
+      <div>
+        <Link to={`/profile/edit/${username}`}>Edit Profile</Link>
+        <Link to={`/profile/security/${username}`}>Change Password</Link>
+      </div>
+    ) : null
+
   return (
     <div>
-      <Link to={`/profile/edit/${username}`}>Edit Profile</Link>
-      <Link to={`/profile/security/${username}`}>Change Password</Link>
+      {editOptions}
       <div className="profile-pic">
         <label className="-label" htmlFor="file">
           <span className="glyphicon glyphicon-camera"></span>
