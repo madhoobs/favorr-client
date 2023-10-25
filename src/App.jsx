@@ -13,6 +13,7 @@ import FavorForm from './pages/FavorForm'
 import EditProfilePage from './pages/EditProfilePage'
 import ChangePasswordPage from './pages/ChangePasswordPage'
 import Footer from './components/Footer'
+import Order from './pages/Order'
 import { CheckSession } from './services/Auth'
 import './App.css'
 
@@ -58,6 +59,7 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
             element={<Category categories={categories} />}
           />
           <Route path="/favor/:favorid" element={<Favor favors={favors} />} />
+          <Route path="/order/:orderid" element={<Order />} />
           <Route
             path="/favoradd"
             element={
