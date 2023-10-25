@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { CreateOrder } from '../services/Order'
+import '../style/packageCard.css'
 
 const PackageCard = ({ packages }) => {
   let navigate = useNavigate()
