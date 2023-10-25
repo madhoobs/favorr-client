@@ -12,6 +12,7 @@ import Favor from './pages/Favor'
 import FavorForm from './pages/FavorForm'
 import EditProfilePage from './pages/EditProfilePage'
 import ChangePasswordPage from './pages/ChangePasswordPage'
+import Footer from './components/Footer'
 import { CheckSession } from './services/Auth'
 import './App.css'
 
@@ -73,6 +74,7 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
           />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
