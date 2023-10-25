@@ -23,12 +23,17 @@ const Favor = () => {
   }, [favor, favorid])
 
   return favor ? (
-    <div>
-      <div key={favor.id}>
-        <h2>
-          {favor.user.firstname} {favor.user.lastname}
-        </h2>
-        <h3>{favor.description}</h3>
+    <div className="favorcontainer">
+      <div className="favorcard" key={favor.id}>
+        <div className="favorheader">
+          <img src={favor.image} alt="" />
+        </div>
+        <div class="descr">
+          <h1>
+            {favor.user.firstname} {favor.user.lastname}
+          </h1>
+          <p>{favor.description}</p>
+        </div>
       </div>
       <PackageCard packages={packages} />
     </div>
