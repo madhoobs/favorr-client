@@ -1,9 +1,19 @@
-const PackageCard = (props) => {
+const PackageCard = ({ packages }) => {
   return (
     <div>
-      <h2>{props.price}</h2>
-      <p>{props.description}</p>
-      <button onClick={props.favor}>Select Package</button>
+      {packages.map((packg) => (
+        <div key={packg._id} id={packg._id}>
+          <div>
+            <h4>{packg.price}</h4>
+          </div>
+          <div>
+            <p>{packg.description}</p>
+          </div>
+          <div>
+            <p>{packg.tier}</p>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

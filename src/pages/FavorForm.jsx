@@ -2,13 +2,12 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { GetCategory } from '../services/Category'
 import { CreateFavor } from '../services/Favor'
+import { CreatePackage } from '../services/Package'
+import PackageForm from '../components/PackageForm'
 
 const FavorForm = ({ user }) => {
   const [categories, setCategories] = useState([])
-  // const [userId, setUserId] = useState('')
 
-  // console.log(user)
-  console.log(categories)
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -23,18 +22,28 @@ const FavorForm = ({ user }) => {
     image: '',
     description: '',
     category: '',
-    user: ''
+    user: '',
   })
-  console.log('heereee', newFavor)
+  const [newPackage, setNewPackage] = useState({
+    price: 0,
+    description: '',
+    tier: '',
+    favor: '',
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await CreateFavor(newFavor)
+    let favor = await CreateFavor(newFavor)
+    await CreatePackage(newPackage, favor._id)
     setNewFavor({ image: '', description: '', category: '', user: '' })
+    setNewPackage({ price: 0, description: '', tier: '', favor: '' })
     navigate('/')
   }
   const handleChangeFavor = (e) => {
     setNewFavor({ ...newFavor, [e.target.name]: e.target.value, user: user.id })
+  }
+  const handleChangePackage = (e) => {
+    setNewPackage({ ...newPackage, [e.target.name]: e.target.value })
   }
 
   return (
@@ -68,6 +77,10 @@ const FavorForm = ({ user }) => {
             ))}
           </select>
         </div>
+        <PackageForm
+          handleChangePackage={handleChangePackage}
+          newPackage={newPackage}
+        />
         <button>Submit</button>
       </form>
     </div>
