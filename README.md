@@ -24,7 +24,8 @@ This platform allows users to register as either service providers or seekers. S
 
 ### **_Getting Started_**
 
-#### Planned draft of the project can be viewed [here]()
+#### Planned draft of the project 
+![Wireframe](./images/Favorr-UI.png)
 
 #### Trello was used to keep track of this project and can be viewed [here](https://trello.com/b/eN71enXd/favorr)
 
