@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { GetFavor } from '../services/Favor'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import { DeleteFavor, GetFavor } from '../services/Favor'
 import { GetPackageByFavor } from '../services/Package'
 import PackageCard from '../components/PackageCard'
 import '../style/favor.css'
 
-const Favor = () => {
+const Favor = ({ user }) => {
   const [favor, setFavor] = useState('')
   const [packages, setPackages] = useState('')
-
+  let navigate = useNavigate()
   let { favorid } = useParams()
 
   useEffect(() => {
@@ -21,6 +21,12 @@ const Favor = () => {
     }
     handleFavor()
   }, [favor, favorid])
+
+  const deleteFavor = async () => {
+    await DeleteFavor(favor._id)
+    // Navigating to profile
+    navigate('/profile/' + user.username)
+  }
 
   return favor ? (
     <section className="vh-100" style={{ backgroundColor: '#eee' }}>
@@ -51,6 +57,18 @@ const Favor = () => {
               <div className="card mb-5" style={{ borderRadius: '15px' }}>
                 <div className="card-body p-4">
                   <h4 className="mb-3">Favor Description</h4>
+                  {user.username && favor.user.username && (
+                    <div>
+                      <a
+                        className="btn btn-outline-danger"
+                        style={{ marginRight: '8px' }}
+                        onClick={deleteFavor}
+                      >
+                        Delete Favor
+                      </a>
+                      <a className="btn btn-outline-warning">Edit Favor</a>
+                    </div>
+                  )}
                   <hr className="my-4"></hr>
                   {favor.description}
                 </div>

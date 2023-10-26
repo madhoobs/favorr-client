@@ -101,9 +101,12 @@ const Profile = ({ user }) => {
   )
 
   let contact = user && user.username != username && (
-    <button type="button" className="btn btn-primary btn-rounded btn-lg">
-      Contact
-    </button>
+    <a
+      className="btn btn-outline-warning"
+      style={{ margin: '5px', width: '90%' }}
+    >
+      Contact {profile.firstname}
+    </a>
   )
 
   let favorCards = favors ? (
@@ -153,7 +156,6 @@ const Profile = ({ user }) => {
                     {profile.firstname} {profile.lastname}
                   </h4>
                   <p className="text-muted mb-4">@{profile.username}</p>
-                  {contact}
                   <div className="d-flex justify-content-between text-center mt-5 mb-2">
                     <div>
                       <p className="mb-2 h5">{favors.length}</p>
@@ -169,6 +171,7 @@ const Profile = ({ user }) => {
                     </div>
                   </div>
                   <br />
+                  {contact}
                   {username === profile.username && editOptions}
                 </div>
               </div>
