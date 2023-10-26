@@ -24,10 +24,11 @@ const PackageCard = ({ packages }) => {
               id={packg._id}
             >
               <div className="card-body text-center">
-                <p className="text-muted mb-4">{packg.tier} Package</p>
+                <br />
+                <p className="mb-2 h5">{packg.tier} Package</p>
                 <div className="d-flex justify-content-between text-center mt-5 mb-2">
                   <div>
-                    <p className="mb-2 h5">BD {packg.price}</p>
+                    <h2>${packg.price}</h2>
                     <p className="text-muted mb-0">{packg.description}</p>
                   </div>
                 </div>

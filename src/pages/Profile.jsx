@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react'
 import { ViewProfile } from '../services/Auth'
 import { GetFavorByUser } from '../services/Favor'
-import { Link, useParams } from 'react-router-dom'
+import { GetOrderByUser } from '../services/Order'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import FavorCard from '../components/FavorCard'
 
 const Profile = ({ user }) => {
   const [profile, setProfile] = useState('')
   const [favors, setFavors] = useState([])
+  const [orders, setOrders] = useState([])
   const [comments, setComments] = useState([])
   let { username } = useParams()
+  let navigate = useNavigate()
 
   useEffect(() => {
     const handleProfile = async () => {
@@ -20,15 +23,80 @@ const Profile = ({ user }) => {
           setFavors(fetchFavors)
         }
         handleFavors()
+        const handleOrders = async () => {
+          const fetchOrders = await GetOrderByUser(profile._id)
+          setOrders(fetchOrders)
+        }
+        handleOrders()
       }
     }
     handleProfile()
   }, [profile])
 
+  const onClick = (id) => {
+    // Navigating to specific Category Page & passing state as prop
+    navigate('/favor/' + id)
+  }
+
   let editOptions = user && user.username === username && (
     <div>
-      <Link to={`/profile/edit/${username}`}>Edit Profile</Link>
-      <Link to={`/profile/security/${username}`}>Change Password</Link>
+      <a
+        className="btn btn-outline-warning"
+        href={`/profile/edit/${username}`}
+        style={{ margin: '5px', width: '90%' }}
+      >
+        Edit Profile
+      </a>
+      <a
+        className="btn btn-outline-warning"
+        href={`/profile/security/${username}`}
+        style={{ margin: '5px', width: '90%' }}
+      >
+        Change Password
+      </a>
+    </div>
+  )
+  let ordersSection = user && user.username === username && (
+    <div className="container py-5 h-100">
+      <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="col col-xl-10">
+          <div className="card mb-5" style={{ borderRadius: '15px' }}>
+            <div className="card-body p-4">
+              <h3 className="mb-3">My Orders</h3>
+              <hr className="my-4"></hr>
+              {orders.length > 0 ? (
+                orders.map((order) => (
+                  <div
+                    className="card"
+                    style={{ width: '18rem', marginBottom: '2rem' }}
+                    key={order._id}
+                    id={order._id}
+                    onClick={() => onClick(order._id)}
+                  >
+                    <div className="card-body">
+                      <p className="card-text">
+                        <b>Order status:</b> {order.status}
+                      </p>
+                      <p className="card-text">
+                        <b>Description:</b> {order.package.description}
+                      </p>
+                    </div>
+                    <div className="d-flex justify-content-start align-items-center">
+                      <p className="mb-0 text-uppercase">
+                        <span className="text-muted small">Show All</span>
+                      </p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <h6 style={{ textAlign: 'center' }}>
+                  Looks like you don't have any orders currently
+                </h6>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 
@@ -59,7 +127,7 @@ const Profile = ({ user }) => {
     <div></div>
   )
 
-  return favors ? (
+  return profile.email != null && favors ? (
     <section className="vh-100" style={{ backgroundColor: '#eee' }}>
       <div className="profile">
         <div className="container py-5 h-100">
@@ -101,20 +169,7 @@ const Profile = ({ user }) => {
                     </div>
                   </div>
                   <br />
-                  <a
-                    className="btn btn-outline-warning"
-                    href={`/profile/edit/${username}`}
-                    style={{ margin: '5px', width: '90%' }}
-                  >
-                    Edit Profile
-                  </a>
-                  <a
-                    className="btn btn-outline-warning"
-                    href={`/profile/security/${username}`}
-                    style={{ margin: '5px', width: '90%' }}
-                  >
-                    Change Password
-                  </a>
+                  {username === profile.username && editOptions}
                 </div>
               </div>
             </div>
@@ -135,15 +190,23 @@ const Profile = ({ user }) => {
                   </div>
                 </div>
               </div>
+              {username === profile.username && ordersSection}
               <div className="card" style={{ borderRadius: '15px' }}>
                 <div className="card-body p-4">
                   <h3 className="mb-3">{profile.firstname}'s Reviews</h3>
                   <hr className="my-4"></hr>
-                  <div className="d-flex justify-content-start align-items-center">
-                    <p className="mb-0 text-uppercase">
-                      <span className="text-muted small">Show All</span>
-                    </p>
-                  </div>
+                  {comments.length > 0 ? (
+                    <div>
+                      {/* comments.map */}
+                      <div className="d-flex justify-content-start align-items-center">
+                        <p className="mb-0 text-uppercase">
+                          <span className="text-muted small">Show All</span>
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <h6 style={{ textAlign: 'center' }}>No reviews, yet. 🥺</h6>
+                  )}
                 </div>
               </div>
             </div>
@@ -151,7 +214,21 @@ const Profile = ({ user }) => {
         </div>
       </div>
     </section>
-  ) : null
+  ) : (
+    <div>
+      <div
+        className="hero-section"
+        style={{ flexDirection: 'column', alignItems: 'center' }}
+      >
+        <h1>Oops!</h1>
+        <br />
+        <h3>Profile Not Found.</h3>
+        <br />
+        <br />
+        <Link to="/">Go back to Home</Link>
+      </div>
+    </div>
+  )
 }
 
 export default Profile

@@ -39,7 +39,7 @@ body {
 .hero-section-title {
   align-items: flex-start;
   background-image: linear-gradient(180deg, #FFAC00 -10%, #efefef 90%);
-    color: black;
+  color: white;
   display: flex;
   min-height: 100%;
   justify-content: center;
