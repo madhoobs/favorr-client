@@ -14,6 +14,7 @@ import EditProfilePage from './pages/EditProfilePage'
 import ChangePasswordPage from './pages/ChangePasswordPage'
 import Footer from './components/Footer'
 import Order from './pages/Order'
+import EditFavorPage from './pages/EditFavorPage'
 import { CheckSession } from './services/Auth'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -66,6 +67,10 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
           <Route
             path="/favor/:favorid"
             element={<Favor user={user} favors={favors} />}
+          />
+          <Route
+            path="/favor/edit/:favorid"
+            element={<EditFavorPage user={user} favors={favors} />}
           />
           <Route path="/order/:orderid" element={<Order />} />
           <Route

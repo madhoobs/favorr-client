@@ -1,39 +1,93 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { DeleteFavor, GetFavor } from '../services/Favor'
+import { useParams, useNavigate } from 'react-router-dom'
+import { EditFavor, GetFavor } from '../services/Favor'
 import { GetPackageByFavor } from '../services/Package'
 import PackageCard from '../components/PackageCard'
+import { GetCategory } from '../services/Category'
 import '../style/favor.css'
 
 const Favor = ({ user }) => {
   const [favor, setFavor] = useState('')
   const [packages, setPackages] = useState('')
+  const [categories, setCategories] = useState([])
   let navigate = useNavigate()
   let { favorid } = useParams()
+  const [newFavor, setNewFavor] = useState(favor)
 
   useEffect(() => {
     const handleFavor = async () => {
       const selectedFavor = await GetFavor(favorid)
-      const selectedPackages = await GetPackageByFavor(favorid)
 
       setFavor(selectedFavor)
-      setPackages(selectedPackages)
+      setNewFavor(selectedFavor)
     }
+    const handleCategories = async () => {
+      const data = await GetCategory()
+      setCategories(data)
+    }
+    handleCategories()
     handleFavor()
-  }, [favor, favorid])
+  }, [favorid])
 
-  const deleteFavor = async () => {
-    await DeleteFavor(favor._id)
-    // Navigating to profile
-    navigate('/profile/' + user.username)
+  const editFavor = async (e) => {
+    e.preventDefault()
+    await EditFavor(favorid, newFavor)
+    setNewFavor({ image: '', description: '', category: '' })
+    navigate(`/favor/${favorid}`)
   }
 
-  const editFavor = async () => {
-    // Navigating to profile
-    navigate('/favor/edit/' + favor._id)
+  const handleChange = (e) => {
+    setNewFavor({ ...newFavor, [e.target.name]: e.target.value })
   }
 
   return favor ? (
+    <div className="container" style={{ padding: '50px 0 50px 0' }}>
+      <h1 style={{ textAlign: 'center' }}>Edit Favor</h1>
+      <br />
+      <form className="form" onSubmit={editFavor}>
+        <label className="label">Favor Image</label>
+        <input
+          className="input"
+          type="text"
+          value={newFavor.image}
+          onChange={handleChange}
+          name={'image'}
+          placeholder={'Choose a descriptive image'}
+          required
+        />
+        <label className="label">Description</label>
+        <input
+          className="input"
+          value={newFavor.description}
+          onChange={handleChange}
+          name={'description'}
+          placeholder={'Enter your service description'}
+          required
+        />
+        <div>
+          <label className="label">Category</label>
+          <select
+            className="input"
+            id="CategoryType"
+            name="category"
+            onChange={handleChange}
+            defaultValue={favor.category._id}
+            required
+          >
+            <option disabled>Choose Favor Type</option>
+            {categories.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button className="btn btn-warning">Edit Favor</button>
+      </form>
+    </div>
+  ) : null
+
+  return (
     <section className="vh-100" style={{ backgroundColor: '#eee' }}>
       <div className="profile">
         <div className="container py-5 h-100">
@@ -62,18 +116,18 @@ const Favor = ({ user }) => {
               <div className="card mb-5" style={{ borderRadius: '15px' }}>
                 <div className="card-body p-4">
                   <h4 className="mb-3">Favor Description</h4>
-                  {user.username && favor.user.username && (
+                  {user.username === favor.user.username && (
                     <div>
                       <a
                         className="btn btn-outline-danger"
                         style={{ marginRight: '8px' }}
-                        onClick={deleteFavor}
                       >
                         Delete Favor
                       </a>
                       <a
                         className="btn btn-outline-warning"
-                        href={`/favor/edit/${favor._id}`}
+                        style={{ marginRight: '8px' }}
+                        onClick={editFavor}
                       >
                         Edit Favor
                       </a>
@@ -100,7 +154,7 @@ const Favor = ({ user }) => {
         <PackageCard packages={packages} />
       </div>
     </section>
-  ) : null
+  )
 }
 
 export default Favor
