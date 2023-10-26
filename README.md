@@ -30,9 +30,11 @@ This platform allows users to register as either service providers or seekers. S
 #### Trello was used to keep track of this project and can be viewed [here](https://trello.com/b/eN71enXd/favorr)
 
 #### Entity Relationship Diagram
+
 ![ERD](./src/images/ERD%20F.png)
 
 #### Component Hierarchy Diagram
+
 ![CHD](./src/images/Component%20Hierarchy%20Diagram.png)
 
 #### The project can be viewed once deployed [here]()
@@ -41,7 +43,7 @@ This platform allows users to register as either service providers or seekers. S
 
 ### **_Future Updates_**
 
-- [ ] 
+- [ ]
 - [ ]
 - [ ]
 - [ ]
@@ -51,6 +53,7 @@ This platform allows users to register as either service providers or seekers. S
 
 ### **_Credits_**
 
+- Landing Page: [Powit on Codepen](https://codepen.io/powit/pen/mzKpwo)
 - Navigation Bar: [Mustafa Omar on Codepen](https://codepen.io/themustafaomar/pen/VKbQye)
 - Profile Cards: [MDBootstrap](https://mdbootstrap.com/docs/standard/extended/profiles/)
 - Category Card Layout: [Steve Meredith on Codepen](https://codepen.io/steveeeie/details/NVWMEM)
@@ -58,6 +61,5 @@ This platform allows users to register as either service providers or seekers. S
 - Footer Styling: [Matheus Almeida on Codepen](https://codepen.io/matheusalmeida/pen/aeLMMr)
 - Favor Cards: [Ahmet Omer on Codepen](https://codepen.io/ahmetomer/pen/PKYmxY)
 - Package Card: [Micheal Rube on Codepen](https://codepen.io/mocoder2/pen/VwbOgBO)
-
 
 ##### Images: []()

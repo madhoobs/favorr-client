@@ -63,7 +63,10 @@ const App = ({ categories, favors, addFavor, newFavor, handleChangeFavor }) => {
             path="/category"
             element={<Category categories={categories} />}
           />
-          <Route path="/favor/:favorid" element={<Favor favors={favors} />} />
+          <Route
+            path="/favor/:favorid"
+            element={<Favor user={user} favors={favors} />}
+          />
           <Route path="/order/:orderid" element={<Order />} />
           <Route
             path="/favoradd"

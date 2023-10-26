@@ -25,7 +25,7 @@ const Category = () => {
   return (
     <div>
       <div className="hero-section-title">
-        <h3>{category} Favors</h3>
+        <h1>{category} Favors</h1>
       </div>
       <div className="hero-section">
         <FavorCard favors={favors} onClick={onClick} />

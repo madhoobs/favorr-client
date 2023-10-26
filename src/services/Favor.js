@@ -27,6 +27,15 @@ export const CreateFavor = async (data) => {
   }
 }
 
+export const DeleteFavor = async (favorid) => {
+  try {
+    const res = await Client.delete(`/favor/${favorid}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const GetFavorByCategory = async (category) => {
   try {
     const res = await Client.get(`/favor/${category}`)
