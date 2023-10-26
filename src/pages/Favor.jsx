@@ -62,7 +62,7 @@ const Favor = ({ user }) => {
               <div className="card mb-5" style={{ borderRadius: '15px' }}>
                 <div className="card-body p-4">
                   <h4 className="mb-3">Favor Description</h4>
-                  {user.username && favor.user.username && (
+                  {user && user.username === favor.user.username && (
                     <div>
                       <a
                         className="btn btn-outline-danger"

@@ -1,6 +1,7 @@
 import Axios from 'axios'
 
-export const BASE_URL = 'http://localhost:4000'
+export const BASE_URL = 'http://favorr.onrender.com'
+// export const BASE_URL = 'http://localhost:4000'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
