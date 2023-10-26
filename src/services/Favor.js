@@ -44,3 +44,12 @@ export const GetFavorByCategory = async (category) => {
     throw error
   }
 }
+
+export const EditFavor = async (favorid, data) => {
+  try {
+    const res = await Client.put(`/favor/${favorid}`, data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
