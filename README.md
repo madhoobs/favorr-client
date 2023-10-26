@@ -25,7 +25,7 @@ This platform allows users to register as either service providers or seekers. S
 ### **_Getting Started_**
 
 #### Planned draft of the project 
-![Wireframe](./images/Favorr-UI.png)
+![Wireframe](./src/images/Favorr-UI.png)
 
 #### Trello was used to keep track of this project and can be viewed [here](https://trello.com/b/eN71enXd/favorr)
 
@@ -37,17 +37,15 @@ This platform allows users to register as either service providers or seekers. S
 
 ![CHD](./src/images/Component%20Hierarchy%20Diagram.png)
 
-#### The project can be viewed once deployed [here]()
+#### The project can be viewed once deployed [here](https://favorr.surge.sh/)
 
 ---
 
 ### **_Future Updates_**
 
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] Comments
+- [ ] Checkout Page
+- [ ] Styling the Cards
 
 ---
 
